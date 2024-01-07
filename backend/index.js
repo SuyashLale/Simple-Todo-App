@@ -9,12 +9,12 @@ app.get("/todos", (req, res) => {
 });
 
 // Create a new todo item
-app.post("/todos", (req, res) => {
+app.post("/todo", (req, res) => {
 
 });
 
 // Mark a todo item done
-app.post("/todos/:id", (req, res) => {
+app.put("/completed", (req, res) => {
 
 });
 
