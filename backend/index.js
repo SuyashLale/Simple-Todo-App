@@ -1,16 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 const { createTodo, updateTodo } = require("../types.js");
 const { todo } = require("./db");
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 
 // See all todo items
 app.get("/todos", async (req, res) => {
   try {
     const todoArr = await todo.find({});
     res.status(200).json({
-      Todos: todoArr,
+      todos: todoArr,
     });
   } catch (e) {
     console.log(e);
