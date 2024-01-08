@@ -10,7 +10,24 @@ export function Todos({ todos }) {
           <div>
             <h1>{todo.title}</h1>
             <h3>{todo.description}</h3>
-            <button>{todo.completed == true ? "Done" : "Mark as Done"}</button>
+            <button
+              onClick={() => {
+                fetch("http://localhost:3000/completed", {
+                  method: "PUT",
+                  body: JSON.stringify({
+                    id: todo._id,
+                  }),
+                  headers: {
+                    "Content-type": "application/json",
+                  },
+                }).then(async function (res) {
+                  await res.json();
+                  alert("Todo Marked DONE");
+                });
+              }}
+            >
+              {todo.completed == true ? "Done" : "Mark as Done"}
+            </button>
           </div>
         );
       })}
